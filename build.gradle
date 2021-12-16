@@ -25,6 +25,8 @@ dependencies {
     implementation "ch.qos.logback:logback-classic:${logbackVersion}"
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testImplementation "org.assertj:assertj-core:${assertJVersion}"
+
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
 
