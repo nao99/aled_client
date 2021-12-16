@@ -1,0 +1,33 @@
+plugins {
+    id "java"
+    id "idea"
+}
+
+idea {
+    project {
+        languageLevel = JavaVersion.VERSION_11
+    }
+
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+group "org.ndbs.aled"
+version "${projectVersion}"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
