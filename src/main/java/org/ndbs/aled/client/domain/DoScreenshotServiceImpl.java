@@ -6,13 +6,13 @@ import org.slf4j.LoggerFactory;
 import java.awt.*;
 
 /**
- * ScreenshoterImpl class
+ * DoScreenshotServiceImpl class
  */
-public class ScreenshoterImpl implements Screenshoter {
-    private final static Logger logger = LoggerFactory.getLogger(ScreenshoterImpl.class);
+public class DoScreenshotServiceImpl implements DoScreenshotService {
+    private final static Logger logger = LoggerFactory.getLogger(DoScreenshotServiceImpl.class);
 
     @Override
-    public Screenshot doScreenshot() throws ScreenshotingException {
+    public Screenshot doScreenshot() throws ScreenshotException {
         Robot robot;
         try {
             robot = new Robot();
@@ -20,7 +20,7 @@ public class ScreenshoterImpl implements Screenshoter {
             var errorMessage = String.format("Unable to do any screenshot: \"%s\"", e.getMessage());
             logger.error(errorMessage);
 
-            throw new ScreenshotingException(errorMessage, e);
+            throw new ScreenshotException(errorMessage, e);
         }
 
         var defaultToolkit = Toolkit.getDefaultToolkit();

@@ -7,22 +7,21 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * ScreenshoterImplTest class
+ * DoScreenshotServiceImplTest class
  *
  * @author  Nikolai Osipov <nao99.dev@gmail.com>
  * @version 1.0.0
  * @since   2021-12-16
  */
-@DisplayName("ScreenshoterImpl test: Test for getting screenshots of a screen")
-class ScreenshoterImplTest {
-    private ScreenshoterImpl screenshoter;
+@DisplayName("DoScreenshotServiceImpl test: Test for getting screenshots of a screen")
+class DoScreenshotServiceImplTest {
+    private DoScreenshotServiceImpl doScreenshotService;
 
     @BeforeEach
     void setUp() {
-        screenshoter = new ScreenshoterImpl();
+        doScreenshotService = new DoScreenshotServiceImpl();
     }
 
     @DisplayName("Should do a screenshot with dimensions of current screen")
@@ -40,7 +39,7 @@ class ScreenshoterImplTest {
         var expectedPixel = Pixel.createFromEncoded(bufferedImage.getRGB(0, 1));
 
         // when
-        var screenshot = screenshoter.doScreenshot();
+        var screenshot = doScreenshotService.doScreenshot();
         var pixel = screenshot.getPixel(0, 1);
 
         // then

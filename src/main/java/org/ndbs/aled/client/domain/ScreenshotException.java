@@ -1,18 +1,18 @@
 package org.ndbs.aled.client.domain;
 
 /**
- * ScreenshotingException class
+ * ScreenshotException class
  *
  * @author  Nikolai Osipov <nao99.dev@gmail.com>
  * @version 1.0.0
  * @since   2021-12-16
  */
-public class ScreenshotingException extends Exception {
-    public ScreenshotingException(String message) {
+public class ScreenshotException extends Exception {
+    public ScreenshotException(String message) {
         super(message);
     }
 
-    public ScreenshotingException(String message, Throwable previous) {
+    public ScreenshotException(String message, Throwable previous) {
         super(message, previous);
     }
 }
