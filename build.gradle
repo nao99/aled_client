@@ -1,6 +1,8 @@
 plugins {
-    id "java"
     id "idea"
+    id "java"
+    id "io.spring.dependency-management" version "${springDependencyManagementVersion}"
+    id "org.springframework.boot" version "${springBootPluginVersion}"
 }
 
 idea {
@@ -21,14 +23,25 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+    dependencies {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootDependenciesVersion}")
+        }
+    }
+}
+
 dependencies {
+    implementation "org.springframework.boot:spring-boot-configuration-processor"
+    implementation "org.springframework.boot:spring-boot-starter"
+
     implementation "com.google.protobuf:protobuf-java:${protobufVersion}"
-    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    implementation "org.hibernate:hibernate-validator:${hibernateValidatorVersion}"
 
-    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
-    testImplementation "org.assertj:assertj-core:${assertJVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine"
 
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testImplementation "org.assertj:assertj-core"
 }
 
 test {

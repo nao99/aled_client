@@ -1,5 +1,7 @@
 package org.ndbs.aled.client.domain;
 
+import org.ndbs.aled.client.domain.model.Screenshot;
+
 /**
  * DoScreenshotService interface
  *

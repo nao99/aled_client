@@ -1,4 +1,4 @@
-package org.ndbs.aled.client.domain;
+package org.ndbs.aled.client.domain.model;
 
 /**
  * Screenshot class

@@ -1,7 +1,12 @@
 package org.ndbs.aled.client.domain;
 
+import org.ndbs.aled.client.domain.model.Diode;
+import org.ndbs.aled.client.domain.model.Pixel;
+import org.ndbs.aled.client.domain.model.Screenshot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * DefineDiodesForScreenshotServiceImpl class
@@ -10,12 +15,14 @@ import org.slf4j.LoggerFactory;
  * @version 1.0.0
  * @since   2021-12-17
  */
+@Service
 public class DefineDiodesForScreenshotServiceImpl implements DefineDiodesForScreenshotService {
     private static final Logger logger = LoggerFactory.getLogger(DefineDiodesForScreenshotServiceImpl.class);
 
-    private final CalculateAverageOfPixelsService calculateAverageOfPixelsService;
+    private final CalculateAveragePixelService calculateAverageOfPixelsService;
 
-    public DefineDiodesForScreenshotServiceImpl(CalculateAverageOfPixelsService calculateAverageOfPixelsService) {
+    @Autowired
+    public DefineDiodesForScreenshotServiceImpl(CalculateAveragePixelService calculateAverageOfPixelsService) {
         this.calculateAverageOfPixelsService = calculateAverageOfPixelsService;
     }
 
@@ -70,8 +77,8 @@ public class DefineDiodesForScreenshotServiceImpl implements DefineDiodesForScre
                 jxx++;
             }
 
-            var averagedPixel = calculateAverageOfPixelsService.calculate(diodePixels);
-            diodes[i] = Diode.createFromPixel(i + 1, averagedPixel);
+//            var averagedPixel = calculateAverageOfPixelsService.calculate(diodePixels);
+//            diodes[i] = Diode.createFromPixel(i + 1, averagedPixel);
         }
 
         int a = 123;

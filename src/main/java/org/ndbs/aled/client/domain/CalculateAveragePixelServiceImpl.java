@@ -1,13 +1,17 @@
 package org.ndbs.aled.client.domain;
 
+import org.ndbs.aled.client.domain.model.Pixel;
+import org.springframework.stereotype.Service;
+
 /**
- * CalculateAverageOfPixelsServiceImpl class
+ * CalculateAveragePixelServiceImpl class
  *
  * @author  Nikolai Osipov <nao99.dev@gmail.com>
  * @version 1.0.0
  * @since   2021-12-17
  */
-public class CalculateAverageOfPixelsServiceImpl implements CalculateAverageOfPixelsService {
+@Service
+public class CalculateAveragePixelServiceImpl implements CalculateAveragePixelService {
     @Override
     public Pixel calculate(Pixel[][] pixels) {
         var a = 0;

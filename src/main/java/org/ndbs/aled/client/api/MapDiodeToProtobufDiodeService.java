@@ -1,6 +1,6 @@
 package org.ndbs.aled.client.api;
 
-import org.ndbs.aled.client.domain.Diode;
+import org.ndbs.aled.client.domain.model.Diode;
 
 /**
  * MapDiodeToProtobufDiodeService interface

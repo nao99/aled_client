@@ -1,5 +1,8 @@
 package org.ndbs.aled.client.domain;
 
+import org.ndbs.aled.client.domain.model.Diode;
+import org.ndbs.aled.client.domain.model.Screenshot;
+
 /**
  * DefineDiodesForScreenshotService interface
  *

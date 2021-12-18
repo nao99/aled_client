@@ -1,4 +1,4 @@
-package org.ndbs.aled.client.domain;
+package org.ndbs.aled.client.domain.model;
 
 /**
  * Pixel class
@@ -8,8 +8,8 @@ package org.ndbs.aled.client.domain;
  * @since   2021-12-16
  */
 public class Pixel {
-    private static final int MIN_CHANNEL_VALUE = 0;
-    private static final int MAX_CHANNEL_VALUE = 255;
+    private final static int MIN_CHANNEL_VALUE = 0;
+    private final static int MAX_CHANNEL_VALUE = 255;
 
     private final int a;
     private final int r;

@@ -11,8 +11,4 @@ public class DefinitionDiodesException extends Exception {
     public DefinitionDiodesException(String message) {
         super(message);
     }
-
-    public DefinitionDiodesException(String message, Throwable previous) {
-        super(message, previous);
-    }
 }

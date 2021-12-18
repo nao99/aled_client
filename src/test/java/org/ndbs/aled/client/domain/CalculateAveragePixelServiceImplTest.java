@@ -3,23 +3,24 @@ package org.ndbs.aled.client.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.ndbs.aled.client.domain.model.Pixel;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * CalculateAverageOfPixelsServiceImplTest class
+ * CalculateAveragePixelServiceImplTest class
  *
  * @author  Nikolai Osipov <nao99.dev@gmail.com>
  * @version 1.0.0
  * @since   2021-12-17
  */
-@DisplayName("CalculateAverageOfPixelsServiceImpl test: Test for calculating average of pixels")
-class CalculateAverageOfPixelsServiceImplTest {
-    private CalculateAverageOfPixelsServiceImpl calculateAverageOfPixelsService;
+@DisplayName("CalculateAveragePixelServiceImpl test: Test for calculating average of pixels")
+class CalculateAveragePixelServiceImplTest {
+    private CalculateAveragePixelServiceImpl calculateAveragePixelService;
 
     @BeforeEach
     void setUp() throws Exception {
-        calculateAverageOfPixelsService = new CalculateAverageOfPixelsServiceImpl();
+        calculateAveragePixelService = new CalculateAveragePixelServiceImpl();
     }
 
     @DisplayName("Should calculate average of squared pixels matrix")
@@ -74,10 +75,10 @@ class CalculateAverageOfPixelsServiceImplTest {
         pixels4[1][1] = pixel33;
 
         // when
-        var pixelAverage1 = calculateAverageOfPixelsService.calculate(pixels1);
-        var pixelAverage2 = calculateAverageOfPixelsService.calculate(pixels2);
-        var pixelAverage3 = calculateAverageOfPixelsService.calculate(pixels3);
-        var pixelAverage4 = calculateAverageOfPixelsService.calculate(pixels4);
+        var pixelAverage1 = calculateAveragePixelService.calculate(pixels1);
+        var pixelAverage2 = calculateAveragePixelService.calculate(pixels2);
+        var pixelAverage3 = calculateAveragePixelService.calculate(pixels3);
+        var pixelAverage4 = calculateAveragePixelService.calculate(pixels4);
 
         // then
         assertThat(pixelAverage1)
@@ -155,15 +156,15 @@ class CalculateAverageOfPixelsServiceImplTest {
         pixels8[1][0] = pixel31;
 
         // when
-        var pixelAverage1 = calculateAverageOfPixelsService.calculate(pixels1);
-        var pixelAverage2 = calculateAverageOfPixelsService.calculate(pixels2);
-        var pixelAverage3 = calculateAverageOfPixelsService.calculate(pixels3);
-        var pixelAverage4 = calculateAverageOfPixelsService.calculate(pixels4);
+        var pixelAverage1 = calculateAveragePixelService.calculate(pixels1);
+        var pixelAverage2 = calculateAveragePixelService.calculate(pixels2);
+        var pixelAverage3 = calculateAveragePixelService.calculate(pixels3);
+        var pixelAverage4 = calculateAveragePixelService.calculate(pixels4);
 
-        var pixelAverage5 = calculateAverageOfPixelsService.calculate(pixels5);
-        var pixelAverage6 = calculateAverageOfPixelsService.calculate(pixels6);
-        var pixelAverage7 = calculateAverageOfPixelsService.calculate(pixels7);
-        var pixelAverage8 = calculateAverageOfPixelsService.calculate(pixels8);
+        var pixelAverage5 = calculateAveragePixelService.calculate(pixels5);
+        var pixelAverage6 = calculateAveragePixelService.calculate(pixels6);
+        var pixelAverage7 = calculateAveragePixelService.calculate(pixels7);
+        var pixelAverage8 = calculateAveragePixelService.calculate(pixels8);
 
         // then
         assertThat(pixelAverage1)
@@ -209,7 +210,7 @@ class CalculateAverageOfPixelsServiceImplTest {
         pixels[1][1] = pixel4;
 
         // when
-        var pixelAverage = calculateAverageOfPixelsService.calculate(pixels);
+        var pixelAverage = calculateAveragePixelService.calculate(pixels);
 
         // then
         assertThat(pixelAverage)

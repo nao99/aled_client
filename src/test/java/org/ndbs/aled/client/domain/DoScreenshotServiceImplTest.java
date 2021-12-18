@@ -3,6 +3,7 @@ package org.ndbs.aled.client.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.ndbs.aled.client.domain.model.Pixel;
 
 import java.awt.*;
 
@@ -54,9 +55,9 @@ class DoScreenshotServiceImplTest {
     }
 
 
-    @DisplayName("Should not do any screenshot if a screen is disabled")
+    @DisplayName("Should do not any screenshot if a screen is disabled")
     @Test
-    void shouldNotDoAnyScreenshotIfScreenIsDisabled() throws Exception {
+    void shouldDoNotAnyScreenshotIfScreenIsDisabled() throws Exception {
         // TODO: describe this test
     }
 }

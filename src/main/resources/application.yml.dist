@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: "ALED Client"
+
+aled:
+  diodes:
+    brightness: 80
+    countByHorizontal: 48
+    countByVertical: 20
+    defaultColorRgb: 255;255;255

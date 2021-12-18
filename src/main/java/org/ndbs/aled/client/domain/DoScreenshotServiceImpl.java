@@ -1,13 +1,17 @@
 package org.ndbs.aled.client.domain;
 
+import org.ndbs.aled.client.domain.model.Pixel;
+import org.ndbs.aled.client.domain.model.Screenshot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.awt.*;
 
 /**
  * DoScreenshotServiceImpl class
  */
+@Service
 public class DoScreenshotServiceImpl implements DoScreenshotService {
     private final static Logger logger = LoggerFactory.getLogger(DoScreenshotServiceImpl.class);
 
