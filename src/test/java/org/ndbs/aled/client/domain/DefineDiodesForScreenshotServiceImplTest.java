@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
  * @version 1.0.0
  * @since   2021-12-17
  */
-@DisplayName("DefineDiodesForScreenshotServiceImpl test: Test for ...")
+@DisplayName("DefineDiodesForScreenshotServiceImpl test: Test for defining diodes for a screenshot")
 class DefineDiodesForScreenshotServiceImplTest {
     private DefineDiodesForScreenshotServiceImpl defineDiodesForScreenshotService;
 
@@ -49,13 +49,14 @@ class DefineDiodesForScreenshotServiceImplTest {
         screenshotPixels[2][1] = Pixel.create(255, 255, 255, 255);
 
         var screenshot = Screenshot.create(3, 2, screenshotPixels);
+        var expectedPixel = Pixel.create(255, 255, 255, 255);
 
-        var expectedDiode1 = Diode.create(1, 240, 0, 100);
-        var expectedDiode2 = Diode.create(2, 240, 0, 100);
-        var expectedDiode3 = Diode.create(3, 240, 0, 100);
-        var expectedDiode4 = Diode.create(4, 240, 0, 100);
-        var expectedDiode5 = Diode.create(5, 240, 0, 100);
-        var expectedDiode6 = Diode.create(6, 240, 0, 100);
+        var expectedDiode1 = Diode.create(1, expectedPixel);
+        var expectedDiode2 = Diode.create(2, expectedPixel);
+        var expectedDiode3 = Diode.create(3, expectedPixel);
+        var expectedDiode4 = Diode.create(4, expectedPixel);
+        var expectedDiode5 = Diode.create(5, expectedPixel);
+        var expectedDiode6 = Diode.create(6, expectedPixel);
 
         // when
         var diodes = defineDiodesForScreenshotService.define(screenshot);
@@ -64,29 +65,28 @@ class DefineDiodesForScreenshotServiceImplTest {
         assertThat(diodes)
             .hasSize(6);
 
-        assertThat(diodes[0])
-            .isEqualTo(expectedDiode1);
+        assertThat(diodes[0].getPixel())
+            .isEqualTo(expectedDiode1.getPixel());
 
-        assertThat(diodes[1])
-            .isEqualTo(expectedDiode2);
+        assertThat(diodes[1].getPixel())
+            .isEqualTo(expectedDiode2.getPixel());
 
-        assertThat(diodes[2])
-            .isEqualTo(expectedDiode3);
+        assertThat(diodes[2].getPixel())
+            .isEqualTo(expectedDiode3.getPixel());
 
-        assertThat(diodes[3])
-            .isEqualTo(expectedDiode4);
+        assertThat(diodes[3].getPixel())
+            .isEqualTo(expectedDiode4.getPixel());
 
-        assertThat(diodes[4])
-            .isEqualTo(expectedDiode5);
+        assertThat(diodes[4].getPixel())
+            .isEqualTo(expectedDiode5.getPixel());
 
-        assertThat(diodes[5])
-            .isEqualTo(expectedDiode6);
+        assertThat(diodes[5].getPixel())
+            .isEqualTo(expectedDiode6.getPixel());
     }
 
-    // TODO: rename
-    @DisplayName("Should define 3 white and 3 black diodes from black and white 3x2 screenshot")
+    @DisplayName("Should define 2 gray, 2 white and 2 black diodes from black and white 3x2 screenshot")
     @Test
-    void shouldDefine3WhiteAnd3BlackDiodesFromBlackAndWhite3X2Screenshot() throws Exception {
+    void shouldDefine2Gray2WhiteAnd2BlackDiodesFromBlackAndWhite3X2Screenshot() throws Exception {
         // given
         var screenshotPixels = new Pixel[3][2];
 
@@ -99,12 +99,16 @@ class DefineDiodesForScreenshotServiceImplTest {
 
         var screenshot = Screenshot.create(3, 2, screenshotPixels);
 
-        var expectedDiode1 = Diode.create(1, 240, 0, 100);
-        var expectedDiode2 = Diode.create(2, 240, 0, 100);
-        var expectedDiode3 = Diode.create(3, 240, 0, 100);
-        var expectedDiode4 = Diode.create(4, 240, 0, 100);
-        var expectedDiode5 = Diode.create(5, 240, 0, 100);
-        var expectedDiode6 = Diode.create(6, 240, 0, 100);
+        var expectedPixelBlack = Pixel.create(255, 0, 0, 0);
+        var expectedPixelGray = Pixel.create(255, 128, 128, 128);
+        var expectedPixelWhite = Pixel.create(255, 255, 255, 255);
+
+        var expectedDiode1 = Diode.create(1, expectedPixelGray);
+        var expectedDiode2 = Diode.create(2, expectedPixelWhite);
+        var expectedDiode3 = Diode.create(3, expectedPixelWhite);
+        var expectedDiode4 = Diode.create(4, expectedPixelGray);
+        var expectedDiode5 = Diode.create(5, expectedPixelBlack);
+        var expectedDiode6 = Diode.create(6, expectedPixelBlack);
 
         // when
         var diodes = defineDiodesForScreenshotService.define(screenshot);
@@ -113,23 +117,23 @@ class DefineDiodesForScreenshotServiceImplTest {
         assertThat(diodes)
             .hasSize(6);
 
-        assertThat(diodes[0])
-            .isEqualTo(expectedDiode1);
+        assertThat(diodes[0].getPixel())
+            .isEqualTo(expectedDiode1.getPixel());
 
-        assertThat(diodes[1])
-            .isEqualTo(expectedDiode2);
+        assertThat(diodes[1].getPixel())
+            .isEqualTo(expectedDiode2.getPixel());
 
-        assertThat(diodes[2])
-            .isEqualTo(expectedDiode3);
+        assertThat(diodes[2].getPixel())
+            .isEqualTo(expectedDiode3.getPixel());
 
-        assertThat(diodes[3])
-            .isEqualTo(expectedDiode4);
+        assertThat(diodes[3].getPixel())
+            .isEqualTo(expectedDiode4.getPixel());
 
-        assertThat(diodes[4])
-            .isEqualTo(expectedDiode5);
+        assertThat(diodes[4].getPixel())
+            .isEqualTo(expectedDiode5.getPixel());
 
-        assertThat(diodes[5])
-            .isEqualTo(expectedDiode6);
+        assertThat(diodes[5].getPixel())
+            .isEqualTo(expectedDiode6.getPixel());
     }
 
     @DisplayName("Should throw an exception if screenshot width less than diodes count by horizontal")
@@ -150,6 +154,16 @@ class DefineDiodesForScreenshotServiceImplTest {
     @Test
     void shouldThrowExceptionIfScreenshotHeightLessThanDiodesCountByVertical() throws Exception {
         // given
+        var calculateAverageOfPixelsService = new CalculateAveragePixelServiceImpl();
+
+        var aledConfigurationPropertiesDiodes = new AledConfigurationProperties.Diodes(80, 2, 2, "255;255;255");
+        var aledConfigurationProperties = new AledConfigurationProperties(aledConfigurationPropertiesDiodes);
+
+        defineDiodesForScreenshotService = new DefineDiodesForScreenshotServiceImpl(
+            aledConfigurationProperties,
+            calculateAverageOfPixelsService
+        );
+
         var screenshotPixels = new Pixel[2][1];
 
         screenshotPixels[0][0] = Pixel.create(255, 0, 0, 0);

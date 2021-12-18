@@ -17,7 +17,7 @@ public interface DefineDiodesForScreenshotService {
      * It means this method defines which diodes should be lighted
      * and with which color
      *
-     * @param screenshot              a screenshot
+     * @param screenshot a screenshot
      * @return a diodes array
      *
      * @throws DefinitionDiodesException if something was wrong
