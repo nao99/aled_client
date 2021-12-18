@@ -26,7 +26,7 @@ class DefineDiodesForScreenshotServiceImplTest {
     void setUp() throws Exception {
         var calculateAverageOfPixelsService = new CalculateAveragePixelServiceImpl();
 
-        var aledConfigurationPropertiesDiodes = new AledConfigurationProperties.Diodes(80, 2, 1, "255,255,255");
+        var aledConfigurationPropertiesDiodes = new AledConfigurationProperties.Diodes(80, 2, 1, "255;255;255");
         var aledConfigurationProperties = new AledConfigurationProperties(aledConfigurationPropertiesDiodes);
 
         defineDiodesForScreenshotService = new DefineDiodesForScreenshotServiceImpl(
