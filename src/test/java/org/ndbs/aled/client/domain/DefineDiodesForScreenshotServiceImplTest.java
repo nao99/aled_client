@@ -3,6 +3,7 @@ package org.ndbs.aled.client.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.ndbs.aled.client.config.AledConfigurationProperties;
 import org.ndbs.aled.client.domain.model.Diode;
 import org.ndbs.aled.client.domain.model.Pixel;
 import org.ndbs.aled.client.domain.model.Screenshot;
@@ -24,7 +25,14 @@ class DefineDiodesForScreenshotServiceImplTest {
     @BeforeEach
     void setUp() throws Exception {
         var calculateAverageOfPixelsService = new CalculateAveragePixelServiceImpl();
-        defineDiodesForScreenshotService = new DefineDiodesForScreenshotServiceImpl(calculateAverageOfPixelsService);
+
+        var aledConfigurationPropertiesDiodes = new AledConfigurationProperties.Diodes(80, 2, 1, "255,255,255");
+        var aledConfigurationProperties = new AledConfigurationProperties(aledConfigurationPropertiesDiodes);
+
+        defineDiodesForScreenshotService = new DefineDiodesForScreenshotServiceImpl(
+            aledConfigurationProperties,
+            calculateAverageOfPixelsService
+        );
     }
 
     @DisplayName("Should define 6 white diodes from white 3x2 screenshot")
@@ -50,7 +58,7 @@ class DefineDiodesForScreenshotServiceImplTest {
         var expectedDiode6 = Diode.create(6, 240, 0, 100);
 
         // when
-        var diodes = defineDiodesForScreenshotService.define(screenshot, 2, 1);
+        var diodes = defineDiodesForScreenshotService.define(screenshot);
 
         // then
         assertThat(diodes)
@@ -99,7 +107,7 @@ class DefineDiodesForScreenshotServiceImplTest {
         var expectedDiode6 = Diode.create(6, 240, 0, 100);
 
         // when
-        var diodes = defineDiodesForScreenshotService.define(screenshot, 2, 1);
+        var diodes = defineDiodesForScreenshotService.define(screenshot);
 
         // then
         assertThat(diodes)
@@ -135,7 +143,7 @@ class DefineDiodesForScreenshotServiceImplTest {
 
         // when / then
         assertThatExceptionOfType(DefinitionDiodesException.class)
-            .isThrownBy(() -> defineDiodesForScreenshotService.define(screenshot, 2, 1));
+            .isThrownBy(() -> defineDiodesForScreenshotService.define(screenshot));
     }
 
     @DisplayName("Should throw an exception if screenshot height less than diodes count by vertical")
@@ -151,6 +159,6 @@ class DefineDiodesForScreenshotServiceImplTest {
 
         // when / then
         assertThatExceptionOfType(DefinitionDiodesException.class)
-            .isThrownBy(() -> defineDiodesForScreenshotService.define(screenshot, 2, 2));
+            .isThrownBy(() -> defineDiodesForScreenshotService.define(screenshot));
     }
 }

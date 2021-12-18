@@ -32,6 +32,22 @@ public class AledConfigurationProperties {
         return diodes;
     }
 
+    public int getBrightness() {
+        return diodes.brightness;
+    }
+
+    public int getCountByHorizontal() {
+        return diodes.countByHorizontal;
+    }
+
+    public int getCountByVertical() {
+        return diodes.countByVertical;
+    }
+
+    public int[] getDefaultColorRgb() {
+        return diodes.defaultColorRgb;
+    }
+
     @Validated
     @ConstructorBinding
     public final static class Diodes {

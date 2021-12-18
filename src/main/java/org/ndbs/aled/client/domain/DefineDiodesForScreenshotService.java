@@ -18,12 +18,9 @@ public interface DefineDiodesForScreenshotService {
      * and with which color
      *
      * @param screenshot              a screenshot
-     * @param diodesCountByHorizontal a count of diodes by screenshot horizontal
-     * @param diodesCountByVertical   a count of diodes by screenshot vertical
-     *
      * @return a diodes array
+     *
      * @throws DefinitionDiodesException if something was wrong
      */
-    Diode[] define(Screenshot screenshot, int diodesCountByHorizontal, int diodesCountByVertical)
-        throws DefinitionDiodesException;
+    Diode[] define(Screenshot screenshot) throws DefinitionDiodesException;
 }
