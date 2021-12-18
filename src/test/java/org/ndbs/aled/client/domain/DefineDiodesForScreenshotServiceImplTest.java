@@ -8,6 +8,8 @@ import org.ndbs.aled.client.domain.model.Diode;
 import org.ndbs.aled.client.domain.model.Pixel;
 import org.ndbs.aled.client.domain.model.Screenshot;
 
+import javax.imageio.ImageIO;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -134,6 +136,62 @@ class DefineDiodesForScreenshotServiceImplTest {
 
         assertThat(diodes[5].getPixel())
             .isEqualTo(expectedDiode6.getPixel());
+    }
+
+    @DisplayName("Should correctly define 136 diodes")
+    @Test
+    void shouldCorrectlyDefine136Diodes() throws Exception {
+        // given
+        var calculateAverageOfPixelsService = new CalculateAveragePixelServiceImpl();
+
+        var aledConfigurationPropertiesDiodes = new AledConfigurationProperties.Diodes(80, 48, 20, "255;255;255");
+        var aledConfigurationProperties = new AledConfigurationProperties(aledConfigurationPropertiesDiodes);
+
+        defineDiodesForScreenshotService = new DefineDiodesForScreenshotServiceImpl(
+            aledConfigurationProperties,
+            calculateAverageOfPixelsService
+        );
+
+        var inputStream = getClass().getClassLoader().getResourceAsStream("screenshot_3840x1440.jpg");
+        var bufferedImage = ImageIO.read(inputStream);
+
+        var width = bufferedImage.getWidth();
+        var height = bufferedImage.getHeight();
+
+        var pixels = new Pixel[width][height];
+
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                int encodedPixel = bufferedImage.getRGB(x, y);
+                pixels[x][y] = Pixel.createFromEncoded(encodedPixel);
+            }
+        }
+
+        var expectedPixel1 = Pixel.create(255, 1, 51, 78);
+        var expectedPixel2 = Pixel.create(255, 234, 89, 100);
+        var expectedPixel3 = Pixel.create(255, 2, 49, 70);
+        var expectedPixel4 = Pixel.create(255, 1, 53, 82);
+
+        var screenshot = Screenshot.create(width, height, pixels);
+
+        // when
+        var diodes = defineDiodesForScreenshotService.define(screenshot);
+
+        // then
+        assertThat(diodes)
+            .hasSize(136);
+
+        assertThat(diodes[0].getPixel())
+            .isEqualTo(expectedPixel1);
+
+        assertThat(diodes[10].getPixel())
+            .isEqualTo(expectedPixel2);
+
+        assertThat(diodes[32].getPixel())
+            .isEqualTo(expectedPixel3);
+
+        assertThat(diodes[97].getPixel())
+            .isEqualTo(expectedPixel4);
     }
 
     @DisplayName("Should throw an exception if screenshot width less than diodes count by horizontal")

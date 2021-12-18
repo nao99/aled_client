@@ -84,10 +84,12 @@ public class DefineDiodesForScreenshotServiceImpl implements DefineDiodesForScre
         boolean vertical
     ) {
         for (var i = 0; i < diodesCount; i++) {
-            if (vertical) {
-                y1 += i * diodePixels;
-            } else {
-                x1 += i * diodePixels;
+            if (i != 0) {
+                if (vertical) {
+                    y1 += diodePixels;
+                } else {
+                    x1 += diodePixels;
+                }
             }
 
             var pixels = getPixels(screenshot, x1, y1, diodePixels);
